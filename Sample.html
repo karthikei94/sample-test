@@ -1,0 +1,87 @@
+<div class="irl-configuration">
+    <div class="row page-title-section">
+        <div class="col-md-12 page-title">IRL Configuration</div>
+    </div>
+    <div class="row col-md-12 marg-top20">
+        <div class="full">
+            <div class="col-md-12">
+                <div class="section-header"><b>Upload Logo</b></div>
+                <div class="upload-container">
+                    <app-upload-file [allowedfileFormats]="supportedFileTypes"
+                        [tabName]="'IRLCONFIGURATION.TITLE' | translate" (controlValue)="updatedFileValues($event)">
+                    </app-upload-file>
+                </div>
+                <div class="image-preview-container">
+                    <div class="image-preview"></div>
+                  </div>
+                <div class="attachments-section">
+                    <span *ngFor="let item of getFiles">
+                        <div class="attachments-tile">
+                            <div class="icon">
+                                <div class="icon-document"></div>
+                            </div>
+                            <div class="details">
+                                <div class="attachment-label">{{item.fileName}}</div>
+                                <div class="progress-section">
+                                    <div class="attachment-label" *ngIf="!uploadInProgress">Upload
+                                        pending</div>
+                                    <mat-progress-bar mode="indeterminate" *ngIf="uploadInProgress">
+                                    </mat-progress-bar>
+                                </div>
+                            </div>
+                        </div>
+                    </span>
+                    <div class="download-button-section">
+                        <button type="button" *ngIf="data.logoFileName"
+                            class="ey-primary-button ey-primary-button-black pull-left">
+                            <span class="ey-primary-buttontext ey-primary-buttontext-black">Download
+                                template</span>
+                        </button>
+                        <!-- <button type="button" (click)="downloadBaseTemplate('GeneratePPT')" class="ey-primary-button ey-primary-button-black pull-left  marg-left">
+                      <span class="ey-primary-buttontext ey-primary-buttontext-black">Download Base template</span>
+                    </button> -->
+                    </div>
+                </div>
+            </div>
+            <div>
+                <irl-configuration-table [dataSource]="data.definationConfig" #varDefConfig>
+                </irl-configuration-table>
+            </div>
+            <!-- <div>
+                <irl-configuration-table [dataSource]="data.tableConfig" #varDefConfig>
+                </irl-configuration-table>
+            </div> -->
+            <div class="footer-button marg-bot20">
+                <div class="mt-5">
+                    <div class="col-lg-12 col-md-12 col-sm-12 text-center full">
+                        <button type="submit" (click)="saveIRLConfiguration()"
+                            class="ey-primary-button ey-primary-button-black pull-left">
+                            <span class="ey-primary-buttontext ey-primary-buttontext-black">{{
+                                'BUTTONS.SAVE' | translate }}</span>
+                        </button>
+                        <button class="ey-secondary-button ey-secondary-button-white pull-left marg-left"
+                            (click)="cancel()">
+                            <span class="ey-primary-buttontext">{{ 'BUTTONS.CANCEL' | translate
+                                }}</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="ey-form-group">
+            </div>
+            <!-- <ey-tab-menu>
+                <ey-tab>
+                    <div class="ey-card" *ngIf="data">
+                        <div class="ey-card-header">
+                            <div>{{ 'IRLCONFIGURATION.TITLE' | translate}}</div>
+                        </div>
+                       
+                    </div>
+                </ey-tab>
+            </ey-tab-menu> -->
+        </div>
+    </div>
+    <div *ngIf="loadspinner">
+        <div class="ey-loader" *ngIf="loadspinner"></div>
+    </div>
+</div>
