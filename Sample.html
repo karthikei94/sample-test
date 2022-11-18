@@ -21,7 +21,7 @@
                                 <div class="icon-document"></div>
                             </div>
                             <div class="details">
-                                <div class="attachment-label">{{item.fileName}}</div>
+                                <div class="label">{{item.fileSuff}}</div>
                                 <div class="progress-section">
                                     <div class="attachment-label" *ngIf="!uploadInProgress">Upload
                                         pending</div>
@@ -33,7 +33,7 @@
                     </span>
                     <div class="download-button-section">
                         <button type="button" *ngIf="data.logoFileName"
-                            class="ey-primary-button ey-primary-button-black pull-left">
+                            class="pull-right pull-left">
                             <span class="ey-primary-buttontext ey-primary-buttontext-black">Download
                                 template</span>
                         </button>
